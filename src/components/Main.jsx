@@ -126,7 +126,7 @@ export default function Main({ setCartItems }) {
 
             <div className="flex items-center gap-3 bg-gray-100 px-3 py-2 rounded-lg">
               <button onClick={handleDecrese} className="text-2xl font-bold w-6">-</button>
-              <h2 className="text-xl min-w-[20px] text-center">{count}</h2>
+              {/* <h2 className="text-xl min-w-[20px] text-center">{count}</h2> */}
               <button onClick={handleIncrease} className="text-2xl font-bold w-6">+</button>
             </div>
 
