@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 
 export default function Main({ setCartItems }) {
-
   const [count, setCount] = useState(0)
   const [index, setIndex] = useState(0)
   const [open, setOpen] = useState(false)
 
-  const handleDecrese = () => {
+  const handleDecrease = () => {
     setCount(prev => (prev === 0 ? 0 : prev - 1))
   }
 
@@ -51,17 +50,18 @@ export default function Main({ setCartItems }) {
   return (
     <>
       <div className="bg-white p-6 rounded-xl shadow-md lg:flex gap-10 relative z-10">
-
+        
         {/* IMAGE */}
         <div className="relative z-10">
-
           <div
             onClick={() => setOpen(true)}
             className="relative w-[350px] h-[350px] overflow-hidden rounded-xl cursor-pointer"
           >
-
             <button
-              onClick={(e) => { e.stopPropagation(); handlePrev() }}
+              onClick={(e) => {
+                e.stopPropagation()
+                handlePrev()
+              }}
               className="lg:hidden bg-gray-200 absolute top-1/2 left-4 -translate-y-1/2 z-50 px-3 py-1 rounded"
             >
               Prev
@@ -82,15 +82,16 @@ export default function Main({ setCartItems }) {
             </div>
 
             <button
-              onClick={(e) => { e.stopPropagation(); handleNext() }}
+              onClick={(e) => {
+                e.stopPropagation()
+                handleNext()
+              }}
               className="lg:hidden bg-gray-200 absolute top-1/2 right-4 -translate-y-1/2 z-50 px-3 py-1 rounded"
             >
               Next
             </button>
-
           </div>
 
-          
           <div className="hidden mt-4 lg:flex gap-2">
             {slideImages.map((img, i) => (
               <img
@@ -104,14 +105,11 @@ export default function Main({ setCartItems }) {
               />
             ))}
           </div>
-
         </div>
 
-    
+        {/* TEXT */}
         <div className="flex flex-col justify-center max-w-md">
-
           <p className="text-red-900 font-bold mb-1">h e e l s</p>
-
           <h1 className="text-2xl font-bold mb-3">Product Name</h1>
 
           <p className="text-gray-600 mb-6">
@@ -123,10 +121,9 @@ export default function Main({ setCartItems }) {
           <h3 className="text-red-900 font-bold mb-6">50% off</h3>
 
           <div className="flex items-center gap-4 mb-4">
-
             <div className="flex items-center gap-3 bg-gray-100 px-3 py-2 rounded-lg">
-              <button onClick={handleDecrese} className="text-2xl font-bold w-6">-</button>
-              {/* <h2 className="text-xl min-w-[20px] text-center">{count}</h2> */}
+              <button onClick={handleDecrease} className="text-2xl font-bold w-6">-</button>
+              <h2 className="text-xl min-w-[20px] text-center">{count}</h2>
               <button onClick={handleIncrease} className="text-2xl font-bold w-6">+</button>
             </div>
 
@@ -136,20 +133,17 @@ export default function Main({ setCartItems }) {
             >
               Add To Cart
             </button>
-
           </div>
-
         </div>
       </div>
 
-   
+      {/* MODAL */}
       {open && (
         <div
           onClick={() => setOpen(false)}
           className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50"
         >
           <div onClick={(e) => e.stopPropagation()}>
-
             <img
               src={slideImages[index]}
               className="w-[400px] h-[400px] object-cover rounded-xl"
@@ -159,7 +153,6 @@ export default function Main({ setCartItems }) {
               <button onClick={handlePrev} className="text-white">Prev</button>
               <button onClick={handleNext} className="text-white">Next</button>
             </div>
-
           </div>
         </div>
       )}
